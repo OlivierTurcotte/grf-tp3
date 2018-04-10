@@ -5,6 +5,8 @@ setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 source("import.r")
 setwd("./Données historiques")
 ADJ <- import()
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+rendement2 <- read.csv("Rendement.csv", header = TRUE,sep = ";")
 
 rendement <- list()
 
@@ -16,8 +18,8 @@ for(i in 1:30){
     rendement[[i]] <- temp
 }
 
-
-
+rendement[[1]] - as.list.factor(rendement2[[2]])
+as.list.factor(rendement2[[1]])
 gm_mean <- function(x) exp(sum(log(x[x > 0])) / length(x))-1
 meanADJ <- lapply(rendement,gm_mean) ## Moyenne
 varADJ  <- lapply(rendement,function(x) sqrt(var(x))) ## Ecart-Type
