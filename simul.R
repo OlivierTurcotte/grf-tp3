@@ -6,29 +6,11 @@ setwd("./Données Denis")
 
 
 ## Poids 15-30 ----
-temp <- read.csv2("Poids15-30.csv",dec = ",",header = F)
-poids15_30 <- matrix(0,nrow = n,ncol = 30)
-
-for (j in seq(n)){
-    c <- numeric(0)
-    for (i in names(temp)){
-        c <- c(c,temp[[i]][j])
-    }
-    poids15_30[j,] <- c
-}
+poids15_30 <- as.matrix(read.csv2("Poids15-30.csv",dec = ",",header = F))
 
 ## Poids 30-30 ----
+poids30_30 <- as.matrix(read.csv2("Poids30-30.csv",dec = ",",header = F))
 
-temp <- read.csv2("Poids30-30.csv",dec = ",",header = F)
-poids30_30 <- matrix(0,nrow = n,ncol = 30)
-
-for (j in seq(n)){
-    c <- numeric(0)
-    for (i in names(temp)){
-        c <- c(c,temp[[i]][j])
-    }
-    poids30_30[j,] <- c
-}
 ## Ecart et moyenne ----
 ecart <- read.csv2("Ecart.csv",dec = ",", header =F)
 corr <- read.csv2("Corr.csv",dec = ",",header = F)
